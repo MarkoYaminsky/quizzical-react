@@ -1,0 +1,21 @@
+.home {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-family: Karla;
+    color: #293264;
+    font-size: 3.5rem;
+  }
+
+  h2 {
+    margin: 2vh 0 5vh;
+    font-size: 1.6rem;
+    font-family: Inter;
+    color: #293264;
+  }
+}
