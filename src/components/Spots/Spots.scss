@@ -1,0 +1,13 @@
+.spots {
+  img {
+    position: absolute;
+
+    &:first-child {
+      inset: auto auto 0 0;
+    }
+
+    &:last-child {
+      inset: 0 0 auto auto;
+    }
+  }
+}
