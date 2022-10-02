@@ -6,19 +6,27 @@ interface ButtonProps {
   text: string;
   fontSize: string;
   href?: string;
+  animationClass?: string;
+  type?: "button" | "submit" | "reset";
 }
 
 const ButtonContent: React.FC<ButtonProps> = (props: ButtonProps) => {
   return (
-    <div className="button" style={{ fontSize: props.fontSize }}>
+    <button
+      className={
+        props.animationClass ? props.animationClass + " button" : "button"
+      }
+      style={{ fontSize: props.fontSize }}
+      type={props.type || "button"}
+    >
       {props.text}
-    </div>
+    </button>
   );
 };
 
 export const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
   return props.href ? (
-    <Link className="linkToQuiz" to={props.href}>
+    <Link className="linkTo" to={props.href}>
       <ButtonContent {...props} />
     </Link>
   ) : (

@@ -1,6 +1,8 @@
+@use "../../assets/styles/colors.scss";
+
 .button {
-  background-color: #4d5b9e;
-  border: solid #4d5b9e;
+  background-color: colors.$medium-blue;
+  border: solid colors.$medium-blue;
   width: fit-content;
   height: fit-content;
   padding: 0.4em 1.9em;
@@ -10,14 +12,18 @@
   transition: 0.5s;
   color: #f5f7fb;
 
-  &:hover {
-    background-color: #deebf8;
+  &.animatedExpand:hover {
+    background-color: colors.$light-gray-blue;
     padding: 0.6em 2.5em;
     border-width: 3px;
-    color: #4d5b9e;
+    color: colors.$medium-blue;
+  }
+
+  &.submit:hover {
+    transform: scale(95%);
   }
 }
 
-.linkToQuiz {
+.linkTo {
   text-decoration: none;
 }

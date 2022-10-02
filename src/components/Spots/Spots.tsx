@@ -1,21 +1,15 @@
 import React from "react";
 import "./Spots.scss";
-import { useState, useEffect } from "react";
 
 import blueSpot from "../../assets/images/blueSpot.svg";
 import lemonSpot from "../../assets/images/lemonSpot.svg";
 
-interface SpotsProps {
-  lemonSpotWidth: string;
-  blueSpotWidth: string;
-}
-
-export const Spots: React.FC<SpotsProps> = (props: SpotsProps) => {
+export const Spots: React.FC = () => {
   return (
     <div className="spots">
       <img
         style={{
-          width: props.blueSpotWidth
+          width: "20vw"
         }}
         src={blueSpot}
         alt="blueSpot"
@@ -23,7 +17,7 @@ export const Spots: React.FC<SpotsProps> = (props: SpotsProps) => {
       />
       <img
         style={{
-          width: props.lemonSpotWidth
+          width: "20vw"
         }}
         src={lemonSpot}
         alt="lemonSpot"
