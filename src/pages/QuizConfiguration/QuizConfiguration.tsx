@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./QuizConfiguration.scss";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -13,6 +13,8 @@ interface SubmittedData {
 }
 
 export const QuizConfiguration: React.FC = () => {
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
   const transformData = (data: SubmittedData) => {
     let transformedDifficulty: string | null = data.difficulty;
 
@@ -44,16 +46,14 @@ export const QuizConfiguration: React.FC = () => {
       <h1>Configure the quiz</h1>
       <Formik
         initialValues={{ questionsAmount: "", difficulty: "anyDifficulty" }}
-        onSubmit={(values, { resetForm }) => {
-          setTimeout(() => {
-            dispatcher(submitConfiguration(transformData(values)));
-            resetForm();
-          }, 400);
+        onSubmit={(values) => {
+          dispatcher(submitConfiguration(transformData(values)));
+          setHasSubmitted(true);
         }}
         validationSchema={Yup.object({
           questionsAmount: Yup.number()
-            .min(5, "* Minimum of 5 questions")
-            .max(20, "* Maximum of 20 questions")
+            .min(4, "* You want a quiz or what? At least 4 questions")
+            .max(100, "* Quite enthusiastic, eh? 100. Get it or leave it")
             .required("* This field is required"),
         })}
       >
@@ -64,6 +64,7 @@ export const QuizConfiguration: React.FC = () => {
                 name="questionsAmount"
                 type="number"
                 placeholder="Number of questions"
+                disabled={hasSubmitted}
               />
               <ErrorMessage
                 name="questionsAmount"
@@ -75,7 +76,12 @@ export const QuizConfiguration: React.FC = () => {
               Difficulty
               <li>
                 <label>
-                  <Field name="difficulty" type="radio" value="anyDifficulty" />
+                  <Field
+                    name="difficulty"
+                    type="radio"
+                    value="anyDifficulty"
+                    disabled={hasSubmitted}
+                  />
                   Any
                 </label>
               </li>
@@ -85,6 +91,7 @@ export const QuizConfiguration: React.FC = () => {
                     name="difficulty"
                     type="radio"
                     value="easyDifficulty"
+                    disabled={hasSubmitted}
                   />
                   Easy
                 </label>
@@ -95,6 +102,7 @@ export const QuizConfiguration: React.FC = () => {
                     name="difficulty"
                     type="radio"
                     value="mediumDifficulty"
+                    disabled={hasSubmitted}
                   />
                   Medium
                 </label>
@@ -105,6 +113,7 @@ export const QuizConfiguration: React.FC = () => {
                     name="difficulty"
                     type="radio"
                     value="hardDifficulty"
+                    disabled={hasSubmitted}
                   />
                   Hard
                 </label>
@@ -112,11 +121,11 @@ export const QuizConfiguration: React.FC = () => {
             </ul>
           </div>
           <Button
-            text="Submit"
+            text={hasSubmitted ? "Go to quiz!" : "Submit"}
             fontSize="2rem"
             type="submit"
-            animationClass="submit"
-            href="/quiz"
+            class={`submit ${hasSubmitted ? "green" : ""}`}
+            href={hasSubmitted ? "/quiz" : undefined}
           />
         </Form>
       </Formik>

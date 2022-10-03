@@ -1,8 +1,8 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home, Quiz, QuizConfiguration } from "./pages";
 import { Spots } from "./components";
- 
+
 function App(): ReactElement {
   return (
     <BrowserRouter>
