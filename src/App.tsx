@@ -5,7 +5,7 @@ import { Spots } from "./components";
 
 function App(): ReactElement {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/quizzical-react">
       <div className="app">
         <Spots />
         <Routes>
