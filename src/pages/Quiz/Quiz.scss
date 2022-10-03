@@ -1,0 +1,27 @@
+@use "../../assets/styles/colors.scss";
+
+.quiz {
+  width: 100vw;
+  min-height: 100vh;
+  padding: 5vh 5vw;
+  display: flex;
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    
+    .quizResults {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      align-self: center;
+
+      h2 {
+        font-size: 1.7rem;
+        font-family: Inter;
+        color: colors.$dark-blue;
+      }
+    }
+  }
+}
+

@@ -11,7 +11,7 @@ export const Home: React.FC = () => {
         text="Let's go!"
         fontSize="1.9rem"
         href="/configuration"
-        animationClass="animatedExpand"
+        class="animatedExpand"
       />
     </div>
   );
